@@ -46,7 +46,6 @@ class SqueezeboxServer(object):
     telnet = None
     is_connected = False
     current_player = 0
-    players = []
     config = SqueezeboxServerSettings()
     _debug = False
 
@@ -56,6 +55,7 @@ class SqueezeboxServer(object):
         self.failures = 0
         self.delta = 600    # Default in ms
         self.config = SqueezeboxServerSettings(locals())
+        self.players = []
         if hostname:
             del self.config["self"]
             del self.config["current_player"]

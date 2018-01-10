@@ -11,6 +11,7 @@ import os
 import sys
 import bz2
 import itertools
+from typing import Dict
 
 import re
 from gi.repository import Gtk, GLib, Pango
@@ -48,6 +49,8 @@ from quodlibet.qltk.x import SymbolicIconImage
 from quodlibet.qltk.menubutton import MenuButton
 from quodlibet.compat import text_type, iteritems, iterkeys
 
+
+Dict
 
 STATION_LIST_URL = \
     "https://quodlibet.github.io/radio/radiolist.bz2"
@@ -411,7 +414,7 @@ class GenreFilter(object):
     }
 
     # parsing all above takes 350ms on an atom, so only generate when needed
-    __CACHE = {}
+    __CACHE = {}  # type: Dict[str, Query]
 
     def keys(self):
         return self.GENRES.keys()

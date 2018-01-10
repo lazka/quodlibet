@@ -9,8 +9,8 @@
 
 import sys
 
-from quodlibet.operon import main
+from quodlibet import operon
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(operon.main())

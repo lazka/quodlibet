@@ -16,12 +16,20 @@ from quodlibet.util import get_module_dir
 from tests import TestCase
 
 
-@pytest.mark.skip("mypy errors need to be fixed first")
 @pytest.mark.quality
 class Tmypy(TestCase):
 
     def test_all(self):
-        root = os.path.dirname(get_module_dir(quodlibet))
+        root = get_module_dir(quodlibet)
         out, err, status = api.run([root])
-        if status != 0:
-            raise Exception("\n" + "\n".join([out, err]))
+        out = "\n".join([p for p in [out, err] if p])
+
+        def filter_line(l):
+            if os.path.join("quodlibet", "packages") in l:
+                return False
+            return True
+
+        out = "\n".join(filter(filter_line, out.splitlines()))
+
+        if out:
+            raise Exception("\n" + out)

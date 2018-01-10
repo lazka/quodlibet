@@ -284,10 +284,6 @@ class WaveformSeekBar(Gtk.Box):
 class WaveformScale(Gtk.EventBox):
     """The waveform widget."""
 
-    _rms_vals = []
-    _player = None
-    _placeholder = True
-
     def __init__(self, player):
         super(WaveformScale, self).__init__()
         self._player = player
@@ -302,6 +298,8 @@ class WaveformScale(Gtk.EventBox):
         self.add_events(Gdk.EventMask.POINTER_MOTION_MASK)
 
         self._seeking = False
+        self._rms_vals = []
+        self._placeholder = True
 
     @property
     def width(self):

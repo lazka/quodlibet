@@ -60,11 +60,11 @@ class TRPaned(object):
             self.assertEqual(p.get_position(), 100)
 
 
-class RHPaned(TestCase, TRPaned):
+class TRHPaned(TestCase, TRPaned):
     Kind = RHPaned
 
 
-class RVPaned(TestCase, TRPaned):
+class TRVPaned(TestCase, TRPaned):
     Kind = RVPaned
 
 

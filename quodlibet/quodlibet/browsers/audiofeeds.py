@@ -11,6 +11,7 @@ import os
 import sys
 import threading
 import time
+from typing import List, Type
 
 from gi.repository import Gtk, GLib, Pango, Gdk
 import feedparser
@@ -37,6 +38,7 @@ from quodlibet.qltk.x import ScrolledWindow, Align, Button, MenuItem
 from quodlibet.util.picklehelper import pickle_load, pickle_dump, PickleError
 
 
+List, Type
 FEEDS = os.path.join(quodlibet.get_user_dir(), "feeds")
 DND_URI_LIST, DND_MOZ_URL = range(2)
 
@@ -537,7 +539,7 @@ class AudioFeeds(Browser):
         else:
             self.__view.select_by_func(lambda r: r[0].name in names)
 
-browsers = []
+browsers = []  # type: List[Type[Browser]]
 if not app.player or app.player.can_play_uri("http://"):
     browsers = [AudioFeeds]
 else:

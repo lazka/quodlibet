@@ -8,6 +8,7 @@
 
 import re
 import shlex
+from typing import Dict, Tuple
 
 from senf import bytes2fsn, fsn2bytes
 
@@ -15,6 +16,9 @@ from quodlibet import const
 from quodlibet.util import print_d, print_w
 from quodlibet.compat import text_type, iteritems
 from .tcpserver import BaseTCPServer, BaseTCPConnection
+
+
+Dict, Tuple
 
 
 class AckError(object):
@@ -579,7 +583,7 @@ class MPDConnection(BaseTCPConnection):
         elif do_ack:
             self.ok()
 
-    _commands = {}
+    _commands = {}  # type: Dict[str, Tuple]
 
     @classmethod
     def Command(cls, name, ack=True, permission=Permissions.PERMISSION_ADMIN):

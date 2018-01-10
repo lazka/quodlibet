@@ -9,6 +9,7 @@
 # (at your option) any later version.
 
 import random
+from typing import Optional
 
 from gi.repository import Gtk, GObject, GLib, Pango
 
@@ -22,6 +23,9 @@ from quodlibet.util import connect_obj, print_d
 from quodlibet.util.i18n import numeric_phrase
 from quodlibet.util.library import background_filter
 from quodlibet.compat import itervalues
+
+
+Optional
 
 
 class Filter(object):
@@ -196,7 +200,7 @@ class Browser(Gtk.Box, Filter):
     the songs returned.
     """
 
-    headers = None
+    headers = None  # type: Optional[List[str]]
     """A list of column headers to display; None means all are okay."""
 
     @classmethod
@@ -366,10 +370,10 @@ class FakeDisplayItem(dict):
 class EditDisplayPatternMixin(object):
     """Provides a display Pattern in an editable frame"""
 
-    _PREVIEW_ITEM = None
+    _PREVIEW_ITEM = None  # type: FakeDisplayItem
     """The `FakeItem` (or similar) to use to interpolate into the pattern"""
 
-    _DEFAULT_PATTERN = None
+    _DEFAULT_PATTERN = None  # type: str
     """The display pattern to use when none is saved"""
 
     def edit_display_pane(self, browser, frame_title=None):

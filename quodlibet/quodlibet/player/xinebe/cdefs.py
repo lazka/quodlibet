@@ -214,8 +214,7 @@ xine_event_dispose_queue.argtypes = [ctypes.c_void_p]
 # void xine_event_create_listener_thread(xine_event_queue_t *queue,
 #    xine_event_listener_cb_t callback,
 #    void *user_data)
-xine_event_create_listener_thread = _libxine.xine_event_create_listener_thread
-xine_event_create_listener_thread.argtypes = [ctypes.c_void_p,
+_libxine.xine_event_create_listener_thread.argtypes = [ctypes.c_void_p,
     ctypes.c_void_p, ctypes.c_void_p]
 
 xine_usec_sleep = _libxine.xine_usec_sleep
@@ -236,8 +235,7 @@ xine_get_status = _libxine.xine_get_status
 xine_get_status.argtypes = [ctypes.c_void_p]
 xine_get_status.restype = ctypes.c_int
 
-xine_get_pos_length = _libxine.xine_get_pos_length
-xine_get_pos_length.argtypes = [ctypes.c_void_p,
+_libxine.xine_get_pos_length.argtypes = [ctypes.c_void_p,
     ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
     ctypes.POINTER(ctypes.c_int)]
 

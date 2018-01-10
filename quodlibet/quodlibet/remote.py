@@ -7,6 +7,7 @@
 # (at your option) any later version.
 
 import os
+from typing import Type
 
 from senf import path2fsn, fsn2bytes, bytes2fsn, fsnative
 
@@ -16,6 +17,9 @@ try:
     from quodlibet.util import winpipe
 except ImportError:
     winpipe = None
+
+
+Type
 
 
 class RemoteError(Exception):
@@ -160,6 +164,7 @@ class QuodLibetUnixRemote(RemoteBase):
                         h.write(fsn2bytes(response, None))
 
 
+Remote = None  # type: Type[RemoteBase]
 if os.name == "nt":
     Remote = QuodLibetWinRemote
 else:

@@ -171,7 +171,7 @@ class VolumeMenu(Gtk.Menu):
 
 class PlayPauseButton(Gtk.Button):
 
-    __gsignals__ = {
+    __gsignals__ = {  # type: ignore
         'toggled': (GObject.SignalFlags.RUN_LAST, None, tuple()),
     }
 

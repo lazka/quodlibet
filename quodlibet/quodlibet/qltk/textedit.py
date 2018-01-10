@@ -27,7 +27,7 @@ try:
     from gi.repository import GtkSource
 except (ValueError, ImportError):
     TextView = Gtk.TextView
-    TextBuffer = Gtk.TextBuffer
+    TextBuffer = Gtk.TextBuffer # type: ignore
 else:
     TextView = GtkSource.View
 
