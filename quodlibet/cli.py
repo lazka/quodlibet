@@ -10,7 +10,7 @@ import os
 from senf import fsn2text, uri2fsn
 
 from quodlibet import C_, _
-from quodlibet.util.dprint import print_, print_e
+from quodlibet.util.dprint import print_e
 from quodlibet.remote import Remote, RemoteError
 
 
@@ -63,7 +63,7 @@ def control(command, arg=None, ignore_error=False):
         exit_(str(e), notify_startup=True)
     else:
         if response is not None:
-            print_(response, end="", flush=True)
+            print(response, end="", flush=True)
         exit_(notify_startup=True)
 
 

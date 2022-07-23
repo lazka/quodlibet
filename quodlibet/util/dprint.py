@@ -15,8 +15,7 @@ import re
 import logging
 import errno
 
-from senf import print_, path2fsn, fsn2text, fsnative, \
-    supports_ansi_escape_codes
+from senf import path2fsn, fsn2text, fsnative
 
 from quodlibet import const
 from . import logging as ql_logging
@@ -166,7 +165,7 @@ def _should_write_to_file(file_):
 def _supports_ansi_escape_codes(file_):
     assert file_ is not None
     try:
-        return supports_ansi_escape_codes(file_.fileno())
+        return file_.isatty()
     except (IOError, AttributeError):
         return False
 
@@ -205,7 +204,7 @@ def _print_message(string, custom_context, debug_only, prefix,
             if not _supports_ansi_escape_codes(file_):
                 string = strip_color(string)
             try:
-                print_(string, file=file_, flush=True)
+                print(string, file=file_, flush=True)
             except (IOError, OSError) as e:
                 if e.errno == errno.EIO:
                     # When we are started in a terminal with --debug and the

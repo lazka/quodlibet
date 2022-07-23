@@ -30,7 +30,7 @@ from senf import fsnative
 from quodlibet.util.string.titlecase import title
 
 from quodlibet.const import SUPPORT_EMAIL, COPYRIGHT
-from quodlibet.util.dprint import print_d, print_, print_e, print_w, print_exc
+from quodlibet.util.dprint import print_d, print_e, print_w, print_exc
 from .misc import cached_func, get_module_dir, get_ca_file, \
     NamedTemporaryFile, cmp
 from .environment import is_plasma, is_unity, is_enlightenment, \
@@ -184,10 +184,10 @@ class OptionParser:
                 elif o.startswith("-"):
                     o = self.__translate_short.get(o[1:], o[1:])
                 if o == "help":
-                    print_(self.help())
+                    print(self.help())
                     raise SystemExit
                 elif o == "version":
-                    print_(self.version())
+                    print(self.version())
                     raise SystemExit
                 elif o == "debug":
                     from quodlibet import const

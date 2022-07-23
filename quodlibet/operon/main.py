@@ -11,7 +11,6 @@ from optparse import OptionParser
 
 import quodlibet
 from quodlibet import const
-from quodlibet.util.dprint import print_
 
 from .base import Command, CommandError
 from . import commands
@@ -34,7 +33,7 @@ def _print_help(main_cmd, parser, file=None):
     cl.append("See '%s help <command>' for more information "
               "on a specific command." % main_cmd)
 
-    print_("\n".join(cl), file=file)
+    print("\n".join(cl), file=file)
 
 
 def main(argv=None):
@@ -83,7 +82,7 @@ def main(argv=None):
 
     # --version somewhere
     if options.version:
-        print_("%s version %s" % (main_cmd, const.VERSION))
+        print("%s version %s" % (main_cmd, const.VERSION))
         return 0
 
     # no sub command followed, help to stderr
@@ -106,11 +105,11 @@ def main(argv=None):
             try:
                 cmd.execute(argv[offset + 1:])
             except CommandError as e:
-                print_(u"%s: %s" % (command.NAME, e), file=sys.stderr)
+                print(u"%s: %s" % (command.NAME, e), file=sys.stderr)
                 return 1
             break
     else:
-        print_(u"Unknown command '%s'. See '%s help'." % (arg, main_cmd),
+        print(u"Unknown command '%s'. See '%s help'." % (arg, main_cmd),
                file=sys.stderr)
         return 1
 

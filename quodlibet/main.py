@@ -12,7 +12,7 @@ import os
 
 from quodlibet import _
 from quodlibet.cli import process_arguments, exit_
-from quodlibet.util.dprint import print_d, print_, print_exc
+from quodlibet.util.dprint import print_d, print_exc
 
 
 def main(argv=None):
@@ -126,7 +126,7 @@ def main(argv=None):
                 pass
             else:
                 if resp is not None:
-                    print_(resp, end="", flush=True)
+                    print(resp, end="", flush=True)
 
     from quodlibet.qltk.quodlibetwindow import QuodLibetWindow, PlayerOptions
     # Call exec_commands after the window is restored, but make sure

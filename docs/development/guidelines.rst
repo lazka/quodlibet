@@ -66,7 +66,7 @@ bug should include tests that would have found the original bug, where possible.
 Printing Text
 -------------
 
-All terminal output should go through the ``print_``, ``print_w``, 
+All terminal output should go through the ``print``, ``print_w``, 
 ``print_e``, or ``print_d`` functions. These will handle Unicode recoding. 
 They also let us capture all output for debugging purposes.
 

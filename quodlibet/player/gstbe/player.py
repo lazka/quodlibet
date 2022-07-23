@@ -23,8 +23,7 @@ from quodlibet import app
 from quodlibet import _
 
 from quodlibet.util import fver, sanitize_tags, MainRunner, MainRunnerError, \
-    MainRunnerAbortedError, MainRunnerTimeoutError, print_w, print_d, \
-    print_e, print_
+    MainRunnerAbortedError, MainRunnerTimeoutError, print_w, print_d, print_e
 from quodlibet.util.path import uri2gsturi
 from quodlibet.player import PlayerError
 from quodlibet.player._base import BasePlayer
@@ -388,7 +387,7 @@ class GStreamerPlayer(BasePlayer, GStreamerPluginHandler):
         if self.bin:
             # self.bin is just a wrapper, so get the real one
             for line in bin_debug([self.bin.bin]):
-                print_(line)
+                print(line)
         else:
             print_e("No active pipeline.")
 

@@ -33,7 +33,6 @@ from quodlibet.plugins.gui import UserInterfacePlugin
 from quodlibet.qltk import Icons, add_css, Align
 from quodlibet.plugins.songsmenu import SongsMenuPlugin
 from quodlibet.util.collection import Collection
-from quodlibet.util import print_
 
 
 class PyConsole(SongsMenuPlugin):
@@ -465,7 +464,7 @@ class PythonConsole(Gtk.ScrolledWindow):
             try:
                 r = eval(command, self.namespace, self.namespace)
                 if r is not None:
-                    print_(repr(r))
+                    print(repr(r))
             except SyntaxError:
                 exec(command, self.namespace)
         except:

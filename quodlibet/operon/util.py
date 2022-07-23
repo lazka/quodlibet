@@ -12,7 +12,7 @@ import shutil
 
 from quodlibet import _
 from quodlibet.util.tags import MACHINE_TAGS, sortkey
-from quodlibet.util.dprint import print_, Colorise
+from quodlibet.util.dprint import Colorise
 from quodlibet import util
 
 from .base import CommandError
@@ -77,11 +77,11 @@ def print_table(rows, headers, nicks, order):
     header = [Colorise.bold(h) for h in header]
     header_line = " " + (" %s " % Colorise.gray("|")).join(header)
 
-    print_(header_line.rstrip())
-    print_(Colorise.gray("-" * line_width))
+    print(header_line.rstrip())
+    print(Colorise.gray("-" * line_width))
 
     for row in rows:
-        print_(" " + (format_string % tuple(row)).rstrip())
+        print(" " + (format_string % tuple(row)).rstrip())
 
 
 def print_terse_table(rows, nicks, order):
@@ -90,7 +90,7 @@ def print_terse_table(rows, nicks, order):
     for row in filter_table(rows, nicks, order):
         row = [r.replace("\\", "\\\\") for r in row]
         row = [r.replace(":", r"\:") for r in row]
-        print_(":".join(row))
+        print(":".join(row))
 
 
 def list_tags(song, machine=False, terse=False):

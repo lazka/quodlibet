@@ -13,7 +13,7 @@ from urllib.parse import quote, unquote
 
 from quodlibet import _
 from quodlibet import app
-from quodlibet.util.dprint import print_w, print_d, print_
+from quodlibet.util.dprint import print_w, print_d
 
 
 class SqueezeboxException(Exception):
@@ -93,7 +93,7 @@ class SqueezeboxServer:
             return None
 
         if self._debug:
-            print_(">>>> \"%s\"" % line)
+            print(">>>> \"%s\"" % line)
         try:
             self.telnet.write((line + "\n").encode('utf-8'))
             if not want_reply:
@@ -108,7 +108,7 @@ class SqueezeboxServer:
             return None
         response = (raw_response if raw else unquote(raw_response)).strip()
         if self._debug:
-            print_("<<<< \"%s\"" % (response,))
+            print("<<<< \"%s\"" % (response,))
         return (response[len(line) - 1:] if line.endswith("?")
                 else response[len(line) + 1:])
 

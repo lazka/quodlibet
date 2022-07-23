@@ -757,7 +757,7 @@ class PrintCommand(Command):
         error = False
         for path in paths:
             try:
-                util.print_(pattern % self.load_song(path))
+                print(pattern % self.load_song(path))
             except CommandError:
                 error = True
 
