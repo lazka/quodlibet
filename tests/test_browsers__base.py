@@ -19,7 +19,6 @@ from quodlibet.util import is_flatpak
 from quodlibet.util.cover import CoverManager
 from tests import TestCase, init_fake_app, destroy_fake_app, mkstemp, run_gtk_loop
 from .helper import realized, dummy_path
-from . import skipIf
 
 from quodlibet import browsers, app
 from quodlibet.formats import AudioFile
@@ -130,7 +129,6 @@ class TBrowserMixin:
     def test_init(self):
         self.Kind.init(self.library)
 
-    @skipIf(is_flatpak(), "crashes in CI")
     def test_active_filter(self):
         with realized(self.b):
             if self.b.active_filter is not None:
@@ -252,6 +250,9 @@ class TDisplayPatternMixin(TestCase):
 browsers.init()
 # create a new test class for each browser
 for browser in browsers.browsers:
+    if is_flatpak():
+        # XXX: crashes in CI
+        continue
     cls = TBrowserBase
     name = "TB" + browser.__name__
     new_test = type(name, (TBrowserBase, TBrowserMixin), {})
